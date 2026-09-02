@@ -4,9 +4,9 @@ import { createServerFn } from "@tanstack/react-start";
 import { getDoc } from "./sheets";
 
 const getClickUpToken = () => {
-  if (typeof process !== "undefined" && process?.env) {
-    if (process.env.VITE_CLICKUP_API_TOKEN) return process.env.VITE_CLICKUP_API_TOKEN;
-    if (process.env.CLICKUP_API_TOKEN) return process.env.CLICKUP_API_TOKEN;
+  if (typeof process !== "undefined" && process.env) {
+    if (process.env["VITE_CLICKUP_API_TOKEN"]) return process.env["VITE_CLICKUP_API_TOKEN"];
+    if (process.env["CLICKUP_API_TOKEN"]) return process.env["CLICKUP_API_TOKEN"];
   }
   try {
     // @ts-ignore
