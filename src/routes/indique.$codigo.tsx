@@ -238,7 +238,7 @@ function IndiqueLandingPage() {
               </h1>
               <p className="text-lg md:text-xl text-[color:var(--brand-sand)]/80 mb-10 leading-relaxed">
                 Centralize sua operação, gere mais oportunidades e automatize seu atendimento com o ecossistema Microsistec.<br/><br/>
-                <strong className="text-white">Você foi indicado para conhecer nossa solução!</strong> Preencha o formulário para falar com nossos especialistas.
+                <strong className="text-[color:var(--brand-orange)] font-bold">Você recebeu 30% de desconto na sua implantação pela sua indicação!</strong> Preencha o formulário para falar com nossos especialistas e garantir seu benefício.
               </p>
               
               <div className="flex flex-col sm:flex-row flex-wrap gap-4 text-sm md:text-base font-semibold text-[color:var(--brand-teal)] mb-10 lg:mb-0">

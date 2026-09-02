@@ -83,9 +83,9 @@ function IndicaEGanhaPage() {
                 <span className="text-[color:var(--brand-teal)]">zere sua mensalidade!</span>
               </h1>
               <p className="text-lg md:text-xl text-[color:var(--brand-sand)]/80 mb-8 leading-relaxed">
-                Seu networking vale ouro. Indique imobiliárias para a Microsistec e ganhe <strong className="text-white">10% de desconto na sua mensalidade</strong> por indicação que virar cliente. <br className="hidden md:block" />
+                Seu networking vale ouro. Indique imobiliárias para a Microsistec e ganhe <strong className="text-white">10% de desconto em uma mensalidade</strong> por indicação que virar cliente. <br className="hidden md:block" />
                 <span className="inline-block mt-2 text-base">
-                  Os descontos são <strong className="text-white">cumulativos</strong>! Você pode chegar a <strong>100% OFF</strong> (com 10 indicações) e ainda presenteia seus indicados com vantagens exclusivas.
+                  Os descontos são <strong className="text-white">cumulativos</strong> dentro do mesmo mês! Você pode chegar a <strong>100% OFF</strong> (com 10 indicações convertidas) e ainda presenteia seus indicados com vantagens exclusivas.
                 </span>
               </p>
 
@@ -108,7 +108,7 @@ function IndicaEGanhaPage() {
                   <div className="w-10 h-10 rounded-full bg-[color:var(--brand-clay)] text-white flex items-center justify-center font-bold shrink-0">3</div>
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Virou cliente? Você ganha.</h3>
-                    <p className="text-[color:var(--brand-sand)]/70">Se a imobiliária indicada contratar, você terá 10% de desconto na sua mensalidade por indicação.</p>
+                    <p className="text-[color:var(--brand-sand)]/70">Se a imobiliária indicada contratar, você terá 10% de desconto na sua próxima mensalidade por indicação.</p>
                   </div>
                 </div>
               </div>
@@ -191,6 +191,31 @@ function IndicaEGanhaPage() {
             </div>
           </div>
         </section>
+
+        {/* REGRAS DA CAMPANHA */}
+        <section className="py-16 md:py-24 bg-slate-50 border-b border-slate-100 text-[color:var(--brand-ink)]">
+          <div className="container max-w-4xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Regras da Campanha</h2>
+            <div className="bg-white p-6 md:p-10 rounded-3xl shadow-sm border border-slate-200 text-sm md:text-base text-slate-600 space-y-6 leading-relaxed">
+              <p>
+                <strong className="text-slate-800">1. Sobre o Desconto:</strong> O desconto de 10% concedido ao cliente indicador incidirá sobre o valor de sua mensalidade vigente e será válido por apenas <strong>1 (um) mês de faturamento</strong> (aplicado no ciclo imediatamente posterior à conversão). O desconto não é vitalício e renova-se exclusivamente a cada nova indicação que se torne cliente.
+              </p>
+              <p>
+                <strong className="text-slate-800">2. Cumulatividade:</strong> Os descontos podem ser cumulados no mesmo mês de faturamento até o limite máximo de 100% de isenção da respectiva fatura (o equivalente a 10 indicações bem-sucedidas em um único período). Eventuais indicações excedentes a este limite não gerarão crédito para faturas futuras, nem poderão ser convertidas em prêmio em dinheiro.
+              </p>
+              <p>
+                <strong className="text-slate-800">3. Condição para Validação:</strong> A indicação será considerada convertida e válida apenas no momento em que a imobiliária indicada assinar o contrato e efetuar o pagamento da taxa de adesão ou da primeira mensalidade do sistema Microsistec.
+              </p>
+              <p>
+                <strong className="text-slate-800">4. Lei Geral de Proteção de Dados (LGPD):</strong> Ao utilizar a plataforma para gerar e compartilhar o link de indicação, você garante o cumprimento da Lei nº 13.709/2018 (LGPD) e atesta possuir permissão para o compartilhamento dos dados. As informações preenchidas pela imobiliária indicada serão utilizadas exclusivamente para fins de atendimento comercial.
+              </p>
+              <p>
+                <strong className="text-slate-800">5. Disposições Finais:</strong> A Microsistec reserva-se o direito de auditar as indicações para coibir fraudes e de encerrar ou modificar os termos desta campanha a qualquer momento, mediante aviso prévio razoável aos seus clientes. Oferta sujeita à análise comercial e regida em conformidade com o Código de Defesa do Consumidor (Lei nº 8.078/1990).
+              </p>
+            </div>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </div>
