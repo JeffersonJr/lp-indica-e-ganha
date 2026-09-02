@@ -83,9 +83,9 @@ function IndicaEGanhaPage() {
                 <span className="text-[color:var(--brand-teal)]">zere sua mensalidade!</span>
               </h1>
               <p className="text-lg md:text-xl text-[color:var(--brand-sand)]/80 mb-8 leading-relaxed">
-                Seu networking vale ouro. Indique imobiliárias para a Microsistec e ganhe <strong className="text-white">10% de desconto em uma mensalidade</strong> por indicação que virar cliente. <br className="hidden md:block" />
+                Seu networking vale ouro. Indique imobiliárias para a Microsistec e ganhe <strong className="text-white">10% de desconto na sua mensalidade</strong> por indicação que virar cliente. <br className="hidden md:block" />
                 <span className="inline-block mt-2 text-base">
-                  Os descontos são <strong className="text-white">cumulativos</strong> dentro do mesmo mês! Você pode chegar a <strong>100% OFF</strong> (com 10 indicações convertidas) e ainda presenteia seus indicados com vantagens exclusivas.
+                  A cada indicação sua que virar cliente Microsistec você ganha <strong className="text-white">10% de desconto na sua mensalidade</strong>, podendo acumular até <strong>100% de desconto</strong>. Confira todas as regras da promoção abaixo.
                 </span>
               </p>
 
