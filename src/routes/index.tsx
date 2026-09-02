@@ -17,6 +17,8 @@ import {
   X,
 } from "lucide-react";
 
+import { SimpleNav as Header, SimpleFooter as Footer } from "@/components/microsistec/MicrosistecLanding";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -33,34 +35,8 @@ export const Route = createFileRoute("/")({
 
 function IndicaEGanhaIndex() {
   return (
-    <div className="min-h-screen bg-[#F7F3EA] text-[#1A1A1A]">
-      <header className="flex items-center justify-center bg-white px-4 md:px-8 py-4 shadow-sm relative z-10">
-        <Link
-          to="/"
-          className="flex flex-row items-center gap-2 font-bold text-2xl tracking-[-0.03em] hover:opacity-85 transition-opacity"
-          title="Microsistec - Marca Registrada"
-        >
-          <img
-            src="/icon.svg"
-            alt="Microsistec Logo"
-            title="Microsistec - Tecnologia e Inovação"
-            width={32}
-            height={32}
-            fetchPriority="high"
-            className="w-8 h-8 object-contain"
-          />
-          <div className="flex items-baseline gap-0.5 font-['Poppins'] font-normal">
-            microsistec
-            <span
-              className="text-[18px] text-muted-foreground self-start mt-1 select-none font-sans font-normal"
-              title="Marca Registrada"
-            >
-              ®
-            </span>
-          </div>
-        </Link>
-
-      </header>
+    <div className="min-h-screen bg-[#F7F3EA] text-[#1A1A1A] flex flex-col">
+      <Header />
       
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-white py-20 lg:py-32">
@@ -303,11 +279,7 @@ function IndicaEGanhaIndex() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-white py-8 border-t border-[#E8EDED]">
-        <div className="container mx-auto px-4 md:px-6 text-center text-[#6B7878] text-sm flex justify-center items-center">
-          <p>feito por microsistec pioneira em tecnologia imobiliária</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

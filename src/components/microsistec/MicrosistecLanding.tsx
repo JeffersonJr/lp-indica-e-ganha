@@ -1817,27 +1817,31 @@ export function ExitModal({ openDemoModal }: { openDemoModal: () => void }) {
 
 export function SimpleNav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white border-b border-[color:var(--brand-ink)]/10">
-      <div className="mx-auto max-w-7xl flex items-center justify-center py-4">
-        <Link
-          to="/"
-          className="flex flex-row items-center gap-2 font-bold text-2xl tracking-[-0.03em] hover:opacity-85 transition-opacity"
-        >
-          <img
-            src="/icon.svg"
-            alt="Microsistec Logo"
-            width={32}
-            height={32}
-            className="w-8 h-8 object-contain"
-          />
-          <div className="flex items-baseline gap-0.5 text-foreground">
-            microsistec
-            <span className="text-[18px] text-muted-foreground self-start mt-1 select-none font-sans font-normal">
-              ®
-            </span>
-          </div>
-        </Link>
-      </div>
+    <header className="flex items-center justify-center bg-white px-4 md:px-8 py-4 shadow-sm relative z-10 border-b border-[#E8EDED]">
+      <Link
+        to="/"
+        className="flex flex-row items-center gap-2 font-bold text-2xl tracking-[-0.03em] hover:opacity-85 transition-opacity"
+        title="Microsistec - Marca Registrada"
+      >
+        <img
+          src="/icon.svg"
+          alt="Microsistec Logo"
+          title="Microsistec - Tecnologia e Inovação"
+          width={32}
+          height={32}
+          fetchPriority="high"
+          className="w-8 h-8 object-contain"
+        />
+        <div className="flex items-baseline gap-0.5 font-['Poppins'] font-normal text-[#1A1A1A]">
+          microsistec
+          <span
+            className="text-[18px] text-muted-foreground self-start mt-1 select-none font-sans font-normal"
+            title="Marca Registrada"
+          >
+            ®
+          </span>
+        </div>
+      </Link>
     </header>
   );
 }
@@ -1854,8 +1858,11 @@ export function SimpleFooter() {
             height={24}
             className="w-6 h-6 object-contain"
           />
-          <div className="flex items-baseline gap-0.5">
+          <div className="flex items-baseline gap-0.5 font-['Poppins'] font-normal">
             microsistec
+            <span className="text-[14px] text-muted-foreground self-start select-none font-sans font-normal">
+              ®
+            </span>
           </div>
         </div>
         <div className="flex items-center gap-4 text-xs">
