@@ -336,126 +336,13 @@ import { PrivacyNotice } from "@/components/microsistec/PrivacyNotice";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const [isIntercomOpen, setIsIntercomOpen] = React.useState(false);
-  const [unreadCount, setUnreadCount] = React.useState(0);
-
-  React.useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    let initialized = false;
-    let intercomPushedState = false;
-    let intercomFnRef: any = null;
-
-    const handlePopState = () => {
-      if (intercomPushedState) {
-        intercomPushedState = false;
-        if (intercomFnRef) {
-          intercomFnRef("hide");
-        } else if (typeof (window as any).Intercom === "function") {
-          (window as any).Intercom("hide");
-        }
-      }
-    };
-
-    window.addEventListener("popstate", handlePopState);
-
-    const initIntercom = async () => {
-      if (initialized) return;
-      initialized = true;
-      try {
-        const { default: Intercom } =
-          await import("@intercom/messenger-js-sdk");
-        Intercom({
-          app_id: "mjj9j4fs",
-          custom_launcher_selector: "#custom-intercom-launcher",
-          hide_default_launcher: true,
-          vertical_padding: 85,
-        });
-
-        // The SDK might set window.Intercom, or we can use the imported function
-        const intercomFn = (window as any).Intercom || Intercom;
-        intercomFnRef = intercomFn;
-        if (typeof intercomFn === "function") {
-          intercomFn("onShow", () => {
-            setIsIntercomOpen(true);
-            if (!intercomPushedState) {
-              window.history.pushState({ intercomOpen: true }, "");
-              intercomPushedState = true;
-            }
-          });
-          intercomFn("onHide", () => {
-            setIsIntercomOpen(false);
-            if (intercomPushedState) {
-              intercomPushedState = false;
-              if (window.history.state?.intercomOpen) {
-                window.history.back();
-              }
-            }
-          });
-          intercomFn("onUnreadCountChange", (count: number) =>
-            setUnreadCount(count),
-          );
-        }
-      } catch (err) {
-        console.error("Failed to initialize Intercom:", err);
-      }
-
-      // Cleanup listeners once loaded
-      window.removeEventListener("scroll", initIntercom);
-      window.removeEventListener("mousemove", initIntercom);
-      window.removeEventListener("touchstart", initIntercom);
-    };
-
-    // Load Intercom ONLY after the user interacts with the page (scroll, move mouse, or touch)
-    // This completely hides the heavy Intercom JS from Lighthouse/PageSpeed, achieving 100/100 TBT
-    window.addEventListener("scroll", initIntercom, { passive: true });
-    window.addEventListener("mousemove", initIntercom, { passive: true });
-    window.addEventListener("touchstart", initIntercom, { passive: true });
-
-    // Fallback: load after 8 seconds if no interaction
-    const fallbackTimer = setTimeout(initIntercom, 8000);
-
-    return () => {
-      clearTimeout(fallbackTimer);
-      window.removeEventListener("popstate", handlePopState);
-      window.removeEventListener("scroll", initIntercom);
-      window.removeEventListener("mousemove", initIntercom);
-      window.removeEventListener("touchstart", initIntercom);
-    };
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <DemoModalProvider>
         <Outlet />
 
-        {/* Custom Intercom Launcher */}
-        <button
-          id="custom-intercom-launcher"
-          aria-label="Fale conosco"
-          data-gtm-cta="abrir_chat_flutuante"
-          data-gtm-location="floating"
-          className="btn-micro fixed bottom-6 right-6 z-50 flex items-center justify-center w-[60px] h-[60px] bg-white rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.18)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.22)] border border-[color:var(--brand-ink)]/10 hover:scale-[1.05] cursor-pointer group"
-          style={{
-            opacity: isIntercomOpen ? 0 : 1,
-            pointerEvents: isIntercomOpen ? "none" : "auto",
-            transition: "opacity 0.3s ease, transform 0.2s ease",
-            padding: 0,
-          }}
-        >
-          <img
-            src="/icon.svg"
-            width={30}
-            height={30}
-            alt="Chat"
-            className="img-micro-scale w-[30px] h-[30px] object-contain"
-          />
-          {unreadCount > 0 && (
-            <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white shadow-sm">
-              {unreadCount}
-            </span>
-          )}
-        </button>
+
 
         <React.Suspense fallback={null}>
           <DemoModal />
