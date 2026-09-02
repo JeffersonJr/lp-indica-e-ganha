@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "@tanstack/react-router";
 
 export function PrivacyNotice() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,21 +37,25 @@ export function PrivacyNotice() {
             Utilizamos cookies para melhorar a sua experiência em nosso site,
             personalizar conteúdo e anúncios. Ao continuar navegando, você
             concorda com a nossa{" "}
-            <Link
+            <a
               title="Política de Privacidade"
-              to="/politica-de-privacidade"
+              href="https://microsistec.com.br/politica-de-privacidade"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#c2410c] font-medium hover:underline underline-offset-2"
             >
               Política de Privacidade
-            </Link>{" "}
+            </a>{" "}
             e{" "}
-            <Link
+            <a
               title="Política de Cookies"
-              to="/politica-de-cookies"
+              href="https://microsistec.com.br/politica-de-cookies"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#c2410c] font-medium hover:underline underline-offset-2"
             >
               Política de Cookies
-            </Link>
+            </a>
             .
           </p>
         </div>
