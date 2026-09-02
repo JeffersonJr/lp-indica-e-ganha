@@ -1,8 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2, Gift } from "lucide-react";
+import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2, Gift, Check, ChevronsUpDown } from "lucide-react";
 import { SimpleNav as Header, SimpleFooter as Footer } from "../components/microsistec/MicrosistecLanding";
-import { phoneMask } from "../lib/utils";
+import { cn, phoneMask } from "../lib/utils";
+import { Button } from "@/components/ui/button";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 import { sendIndicacaoToClickUp } from "../lib/clickup";
 
@@ -10,8 +13,39 @@ export const Route = createFileRoute("/indique/$codigo")({
   component: IndiqueLandingPage,
 });
 
+const ESTADOS = [
+  { value: "AC", label: "Acre (AC)" },
+  { value: "AL", label: "Alagoas (AL)" },
+  { value: "AP", label: "Amapá (AP)" },
+  { value: "AM", label: "Amazonas (AM)" },
+  { value: "BA", label: "Bahia (BA)" },
+  { value: "CE", label: "Ceará (CE)" },
+  { value: "DF", label: "Distrito Federal (DF)" },
+  { value: "ES", label: "Espírito Santo (ES)" },
+  { value: "GO", label: "Goiás (GO)" },
+  { value: "MA", label: "Maranhão (MA)" },
+  { value: "MT", label: "Mato Grosso (MT)" },
+  { value: "MS", label: "Mato Grosso do Sul (MS)" },
+  { value: "MG", label: "Minas Gerais (MG)" },
+  { value: "PA", label: "Pará (PA)" },
+  { value: "PB", label: "Paraíba (PB)" },
+  { value: "PR", label: "Paraná (PR)" },
+  { value: "PE", label: "Pernambuco (PE)" },
+  { value: "PI", label: "Piauí (PI)" },
+  { value: "RJ", label: "Rio de Janeiro (RJ)" },
+  { value: "RN", label: "Rio Grande do Norte (RN)" },
+  { value: "RS", label: "Rio Grande do Sul (RS)" },
+  { value: "RO", label: "Rondônia (RO)" },
+  { value: "RR", label: "Roraima (RR)" },
+  { value: "SC", label: "Santa Catarina (SC)" },
+  { value: "SP", label: "São Paulo (SP)" },
+  { value: "SE", label: "Sergipe (SE)" },
+  { value: "TO", label: "Tocantins (TO)" },
+];
+
 function IndiqueLandingPage() {
   const { codigo } = Route.useParams();
+  const [openEstado, setOpenEstado] = useState(false);
   
   const [formData, setFormData] = useState({
     imobiliaria: "",
@@ -112,20 +146,54 @@ function IndiqueLandingPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1.5 relative">
                   <label htmlFor="estado" className="text-sm font-semibold text-[color:var(--brand-ink)]">Estado*</label>
-                  <select id="estado" name="estado" autoComplete="address-level1" required value={formData.estado} onChange={e => setFormData({...formData, estado: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
-                    <option value="" disabled>UF</option>
-                    <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
-                    <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
-                    <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
-                    <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
-                    <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
-                    <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
-                    <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
-                    <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
-                    <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
-                  </select>
+                  <Popover open={openEstado} onOpenChange={setOpenEstado}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        role="combobox"
+                        aria-expanded={openEstado}
+                        className={cn("w-full justify-between px-4 py-3 h-[46px] font-normal rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] hover:bg-white focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition", !formData.estado && "text-muted-foreground")}
+                      >
+                        {formData.estado
+                          ? ESTADOS.find((estado) => estado.value === formData.estado)?.label
+                          : "UF"}
+                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-[300px] p-0" align="start">
+                      <Command>
+                        <CommandInput placeholder="Buscar estado..." />
+                        <CommandList>
+                          <CommandEmpty>Nenhum estado encontrado.</CommandEmpty>
+                          <CommandGroup>
+                            {ESTADOS.map((estado) => {
+                              const searchableValue = `${estado.label} ${estado.value} ${estado.label.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`;
+                              return (
+                              <CommandItem
+                                key={estado.value}
+                                value={searchableValue}
+                                onSelect={() => {
+                                  setFormData({ ...formData, estado: estado.value })
+                                  setOpenEstado(false)
+                                }}
+                              >
+                                <Check
+                                  className={cn(
+                                    "mr-2 h-4 w-4",
+                                    formData.estado === estado.value ? "opacity-100" : "opacity-0"
+                                  )}
+                                />
+                                {estado.label}
+                              </CommandItem>
+                            )})}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                  <input type="text" name="estado" id="estado" required value={formData.estado} onChange={() => {}} className="absolute opacity-0 w-0 h-0 pointer-events-none left-1/2 bottom-0" tabIndex={-1} />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="cidade" className="text-sm font-semibold text-[color:var(--brand-ink)]">Cidade*</label>
