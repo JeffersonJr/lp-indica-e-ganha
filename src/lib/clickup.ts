@@ -171,6 +171,7 @@ export const sendIndicadorToClickUp = createServerFn({ method: "POST" })
   });
 
 export interface IndicacaoData {
+  codigo_indicador?: string;
   indicador_nome: string;
   indicador_imobiliaria: string;
   indicador_telefone: string;
@@ -243,7 +244,7 @@ Qual CRM: ${data.qualCrm || "Não informado"}
           await sheet.loadHeaderRow();
         } catch (e) {
           await sheet.setHeaderRow([
-            "Data", "Nome Indicador", "Imob Indicador", "ImobiliariaIndicada", "Responsavel", 
+            "Data", "CodigoIndicador", "Nome Indicador", "Imob Indicador", "ImobiliariaIndicada", "Responsavel", 
             "Telefone", "Email", "Estado", "Cidade", "Corretores", "UsaCRM", "QualCRM"
           ]);
         }
@@ -251,6 +252,7 @@ Qual CRM: ${data.qualCrm || "Não informado"}
         const date = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
         await sheet.addRow({
           "Data": date,
+          "CodigoIndicador": data.codigo_indicador || data.indicador_nome,
           "Nome Indicador": data.indicador_nome,
           "Imob Indicador": data.indicador_imobiliaria,
           "ImobiliariaIndicada": data.indicado_nome,

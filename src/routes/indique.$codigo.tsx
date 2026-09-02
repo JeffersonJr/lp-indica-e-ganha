@@ -75,6 +75,7 @@ function IndiqueLandingPage() {
     try {
       await sendIndicacaoToClickUp({
         data: {
+          codigo_indicador: codigo,
           indicador_nome: nomeIndicador,
           indicador_imobiliaria: imobIndicador,
           indicador_telefone: "Não informado",
