@@ -19,6 +19,7 @@ function IndiqueLandingPage() {
     whatsapp: "",
     email: "",
     cidade: "",
+    estado: "",
     corretores: "",
     usaCrm: "",
     qualCrm: ""
@@ -33,10 +34,15 @@ function IndiqueLandingPage() {
 
     setIsSubmitting(true);
     
+    const [rawNome, rawImob] = codigo.split("-");
+    const nomeIndicador = (rawNome || "").replace(/\./g, " ").replace(/\b\w/g, l => l.toUpperCase());
+    const imobIndicador = (rawImob || "").replace(/\./g, " ").replace(/\b\w/g, l => l.toUpperCase());
+
     try {
       await sendIndicacaoToClickUp({
         data: {
-          indicador_nome: codigo,
+          indicador_nome: nomeIndicador,
+          indicador_imobiliaria: imobIndicador,
           indicador_telefone: "Não informado",
           indicador_email: "Não informado",
           indicado_nome: formData.imobiliaria,
@@ -44,6 +50,7 @@ function IndiqueLandingPage() {
           indicado_telefone: formData.whatsapp,
           indicado_email: formData.email,
           cidade: formData.cidade,
+          estado: formData.estado,
           corretores: formData.corretores,
           usaCrm: formData.usaCrm,
           qualCrm: formData.qualCrm
@@ -83,36 +90,53 @@ function IndiqueLandingPage() {
             <input type="hidden" name="origem" value={`indicacao_${codigo}`} />
             
             <div className="grid grid-cols-1 gap-4">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-slate-700">Imobiliária*</label>
-                <input required type="text" value={formData.imobiliaria} onChange={e => setFormData({...formData, imobiliaria: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="imob" className="text-sm font-semibold text-[color:var(--brand-ink)]">Imobiliária*</label>
+                <input id="imob" name="imob" autoComplete="organization" required type="text" value={formData.imobiliaria} onChange={e => setFormData({...formData, imobiliaria: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition" />
               </div>
               
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-slate-700">Responsável*</label>
-                <input required type="text" value={formData.responsavel} onChange={e => setFormData({...formData, responsavel: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="resp" className="text-sm font-semibold text-[color:var(--brand-ink)]">Responsável*</label>
+                <input id="resp" name="resp" autoComplete="name" required type="text" value={formData.responsavel} onChange={e => setFormData({...formData, responsavel: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition" />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs font-semibold text-slate-700">WhatsApp*</label>
-                  <input required type="tel" value={formData.whatsapp} onChange={e => setFormData({...formData, whatsapp: phoneMask(e.target.value)})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="whatsapp" className="text-sm font-semibold text-[color:var(--brand-ink)]">WhatsApp*</label>
+                  <input id="whatsapp" name="whatsapp" autoComplete="tel" required type="tel" value={formData.whatsapp} onChange={e => setFormData({...formData, whatsapp: phoneMask(e.target.value)})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition" />
                 </div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs font-semibold text-slate-700">E-mail*</label>
-                  <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="email" className="text-sm font-semibold text-[color:var(--brand-ink)]">E-mail*</label>
+                  <input id="email" name="email" autoComplete="email" required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition" />
                 </div>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold text-slate-700">Cidade / Estado*</label>
-                <input required type="text" value={formData.cidade} onChange={e => setFormData({...formData, cidade: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs font-semibold text-slate-700">Qtd Corretores*</label>
-                  <select required value={formData.corretores} onChange={e => setFormData({...formData, corretores: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)] bg-white">
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="estado" className="text-sm font-semibold text-[color:var(--brand-ink)]">Estado*</label>
+                  <select id="estado" name="estado" autoComplete="address-level1" required value={formData.estado} onChange={e => setFormData({...formData, estado: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
+                    <option value="" disabled>UF</option>
+                    <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
+                    <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
+                    <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
+                    <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
+                    <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
+                    <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
+                    <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
+                    <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
+                    <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="cidade" className="text-sm font-semibold text-[color:var(--brand-ink)]">Cidade*</label>
+                  <input id="cidade" name="cidade" autoComplete="address-level2" required type="text" value={formData.cidade} onChange={e => setFormData({...formData, cidade: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="corretores" className="text-sm font-semibold text-[color:var(--brand-ink)]">Qtd Corretores*</label>
+                  <select id="corretores" name="corretores" required value={formData.corretores} onChange={e => setFormData({...formData, corretores: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
                     <option value="" disabled>Selecione</option>
                     <option value="1 a 3">1 a 3</option>
                     <option value="4 a 10">4 a 10</option>
@@ -122,9 +146,9 @@ function IndiqueLandingPage() {
                   </select>
                 </div>
 
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs font-semibold text-slate-700">Usa CRM?*</label>
-                  <select required value={formData.usaCrm} onChange={e => setFormData({...formData, usaCrm: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)] bg-white">
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="usacrm" className="text-sm font-semibold text-[color:var(--brand-ink)]">Usa CRM?*</label>
+                  <select id="usacrm" name="usacrm" required value={formData.usaCrm} onChange={e => setFormData({...formData, usaCrm: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
                     <option value="" disabled>Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
@@ -133,9 +157,9 @@ function IndiqueLandingPage() {
               </div>
 
               {formData.usaCrm === "Sim" && (
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs font-semibold text-slate-700">Qual CRM? (Opcional)</label>
-                  <input type="text" value={formData.qualCrm} onChange={e => setFormData({...formData, qualCrm: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="qualcrm" className="text-sm font-semibold text-[color:var(--brand-ink)]">Qual CRM? (Opcional)</label>
+                  <input id="qualcrm" name="qualcrm" type="text" value={formData.qualCrm} onChange={e => setFormData({...formData, qualCrm: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition" />
                 </div>
               )}
             </div>

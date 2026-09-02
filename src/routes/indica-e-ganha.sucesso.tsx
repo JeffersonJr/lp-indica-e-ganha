@@ -36,7 +36,7 @@ function IndicaEGanhaSucessoPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-full bg-[color:var(--brand-clay)]/20 blur-[100px] rounded-full pointer-events-none" />
         
         <div className="relative z-10 w-full max-w-md mx-auto">
-          <Link to="/indica-e-ganha" className="inline-flex items-center gap-2 text-[color:var(--brand-sand)]/70 hover:text-[color:var(--brand-sand)] mb-8 transition decoration-none border-none">
+          <Link to="/" className="inline-flex items-center gap-2 text-[color:var(--brand-sand)]/70 hover:text-[color:var(--brand-sand)] mb-8 transition decoration-none border-none">
             <ChevronLeft className="w-4 h-4" />
             Indicar outra imobiliária
           </Link>

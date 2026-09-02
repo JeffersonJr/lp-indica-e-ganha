@@ -9,19 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Layout1RouteImport } from './routes/layout-1'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as IndicaEGanhaIndexRouteImport } from './routes/indica-e-ganha.index'
 import { Route as IndiqueCodigoRouteImport } from './routes/indique.$codigo'
 import { Route as IndicaEGanhaSucessoRouteImport } from './routes/indica-e-ganha.sucesso'
 
+const Layout1Route = Layout1RouteImport.update({
+  id: '/layout-1',
+  path: '/layout-1',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndicaEGanhaIndexRoute = IndicaEGanhaIndexRouteImport.update({
-  id: '/indica-e-ganha/',
-  path: '/indica-e-ganha/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndiqueCodigoRoute = IndiqueCodigoRouteImport.update({
@@ -37,61 +37,57 @@ const IndicaEGanhaSucessoRoute = IndicaEGanhaSucessoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/layout-1': typeof Layout1Route
   '/indica-e-ganha/sucesso': typeof IndicaEGanhaSucessoRoute
   '/indique/$codigo': typeof IndiqueCodigoRoute
-  '/indica-e-ganha/': typeof IndicaEGanhaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/layout-1': typeof Layout1Route
   '/indica-e-ganha/sucesso': typeof IndicaEGanhaSucessoRoute
   '/indique/$codigo': typeof IndiqueCodigoRoute
-  '/indica-e-ganha': typeof IndicaEGanhaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/layout-1': typeof Layout1Route
   '/indica-e-ganha/sucesso': typeof IndicaEGanhaSucessoRoute
   '/indique/$codigo': typeof IndiqueCodigoRoute
-  '/indica-e-ganha/': typeof IndicaEGanhaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/indica-e-ganha/sucesso'
-    | '/indique/$codigo'
-    | '/indica-e-ganha/'
+  fullPaths: '/' | '/layout-1' | '/indica-e-ganha/sucesso' | '/indique/$codigo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/indica-e-ganha/sucesso' | '/indique/$codigo' | '/indica-e-ganha'
+  to: '/' | '/layout-1' | '/indica-e-ganha/sucesso' | '/indique/$codigo'
   id:
     | '__root__'
     | '/'
+    | '/layout-1'
     | '/indica-e-ganha/sucesso'
     | '/indique/$codigo'
-    | '/indica-e-ganha/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  Layout1Route: typeof Layout1Route
   IndicaEGanhaSucessoRoute: typeof IndicaEGanhaSucessoRoute
   IndiqueCodigoRoute: typeof IndiqueCodigoRoute
-  IndicaEGanhaIndexRoute: typeof IndicaEGanhaIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/layout-1': {
+      id: '/layout-1'
+      path: '/layout-1'
+      fullPath: '/layout-1'
+      preLoaderRoute: typeof Layout1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/indica-e-ganha/': {
-      id: '/indica-e-ganha/'
-      path: '/indica-e-ganha'
-      fullPath: '/indica-e-ganha/'
-      preLoaderRoute: typeof IndicaEGanhaIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/indique/$codigo': {
@@ -113,9 +109,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  Layout1Route: Layout1Route,
   IndicaEGanhaSucessoRoute: IndicaEGanhaSucessoRoute,
   IndiqueCodigoRoute: IndiqueCodigoRoute,
-  IndicaEGanhaIndexRoute: IndicaEGanhaIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

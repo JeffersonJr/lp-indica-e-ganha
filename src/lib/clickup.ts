@@ -172,6 +172,7 @@ export const sendIndicadorToClickUp = createServerFn({ method: "POST" })
 
 export interface IndicacaoData {
   indicador_nome: string;
+  indicador_imobiliaria: string;
   indicador_telefone: string;
   indicador_email: string;
   indicado_nome: string;
@@ -179,6 +180,7 @@ export interface IndicacaoData {
   indicado_telefone: string;
   indicado_email: string;
   cidade?: string;
+  estado?: string;
   corretores?: string;
   usaCrm?: string;
   qualCrm?: string;
@@ -199,7 +201,8 @@ export const sendIndicacaoToClickUp = createServerFn({ method: "POST" })
 Nova Indicação - Campanha Setembro Indica & Ganha
 
 🎯 DADOS DE QUEM INDICOU (Cliente)
-Código de quem indicou: ${data.indicador_nome}
+Nome: ${data.indicador_nome}
+Imobiliária: ${data.indicador_imobiliaria}
 
 🤝 DADOS DA IMOBILIÁRIA INDICADA
 Nome da Imobiliária: ${data.indicado_nome}
@@ -208,6 +211,7 @@ Telefone: ${data.indicado_telefone}
 E-mail: ${data.indicado_email}
 
 📍 INFORMAÇÕES EXTRAS
+Estado: ${data.estado || "Não informado"}
 Cidade: ${data.cidade || "Não informado"}
 Corretores: ${data.corretores || "Não informado"}
 Usa CRM: ${data.usaCrm || "Não informado"}
@@ -239,19 +243,21 @@ Qual CRM: ${data.qualCrm || "Não informado"}
           await sheet.loadHeaderRow();
         } catch (e) {
           await sheet.setHeaderRow([
-            "Data", "CodigoIndicador", "ImobiliariaIndicada", "Responsavel", 
-            "Telefone", "Email", "Cidade", "Corretores", "UsaCRM", "QualCRM"
+            "Data", "Nome Indicador", "Imob Indicador", "ImobiliariaIndicada", "Responsavel", 
+            "Telefone", "Email", "Estado", "Cidade", "Corretores", "UsaCRM", "QualCRM"
           ]);
         }
 
         const date = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
         await sheet.addRow({
           "Data": date,
-          "CodigoIndicador": data.indicador_nome,
+          "Nome Indicador": data.indicador_nome,
+          "Imob Indicador": data.indicador_imobiliaria,
           "ImobiliariaIndicada": data.indicado_nome,
           "Responsavel": data.indicado_responsavel,
           "Telefone": data.indicado_telefone,
           "Email": data.indicado_email,
+          "Estado": data.estado || "",
           "Cidade": data.cidade || "",
           "Corretores": data.corretores || "",
           "UsaCRM": data.usaCrm || "",
