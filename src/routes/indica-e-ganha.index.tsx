@@ -83,7 +83,7 @@ function IndicaEGanhaPage() {
                 <span className="text-[color:var(--brand-teal)]">zere sua mensalidade!</span>
               </h1>
               <p className="text-lg md:text-xl text-[color:var(--brand-sand)]/80 mb-8 leading-relaxed">
-                Seu networking vale ouro. Indique imobiliárias para a Microsistec e ganhe <strong className="text-white">10% de desconto</strong> para cada uma que virar cliente. <br className="hidden md:block" />
+                Seu networking vale ouro. Indique imobiliárias para a Microsistec e ganhe <strong className="text-white">10% de desconto na sua mensalidade</strong> por indicação que virar cliente. <br className="hidden md:block" />
                 <span className="inline-block mt-2 text-base">
                   Os descontos são <strong className="text-white">cumulativos</strong>! Você pode chegar a <strong>100% OFF</strong> (com 10 indicações) e ainda presenteia seus indicados com vantagens exclusivas.
                 </span>
@@ -108,7 +108,7 @@ function IndicaEGanhaPage() {
                   <div className="w-10 h-10 rounded-full bg-[color:var(--brand-clay)] text-white flex items-center justify-center font-bold shrink-0">3</div>
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Virou cliente? Você ganha.</h3>
-                    <p className="text-[color:var(--brand-sand)]/70">Se a imobiliária indicada contratar, você recebe 10% de desconto em uma mensalidade.</p>
+                    <p className="text-[color:var(--brand-sand)]/70">Se a imobiliária indicada contratar, você terá 10% de desconto na sua mensalidade por indicação.</p>
                   </div>
                 </div>
               </div>
