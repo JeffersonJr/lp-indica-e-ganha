@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2, Gift, Check, ChevronsUpDown } from "lucide-react";
+import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2, Gift, Check, ChevronsUpDown, ChevronDown } from "lucide-react";
 import { SimpleNav as Header, SimpleFooter as Footer } from "../components/microsistec/MicrosistecLanding";
 import { cn, phoneMask } from "../lib/utils";
 import { Button } from "@/components/ui/button";
@@ -146,54 +146,17 @@ function IndiqueLandingPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5 relative">
+                <div className="flex flex-col gap-1.5">
                   <label htmlFor="estado" className="text-sm font-semibold text-[color:var(--brand-ink)]">Estado*</label>
-                  <Popover open={openEstado} onOpenChange={setOpenEstado}>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        role="combobox"
-                        aria-expanded={openEstado}
-                        className={cn("w-full justify-between px-4 py-3 h-[46px] font-normal rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] hover:bg-white focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition", !formData.estado && "text-muted-foreground")}
-                      >
-                        {formData.estado
-                          ? ESTADOS.find((estado) => estado.value === formData.estado)?.label
-                          : "UF"}
-                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-[300px] p-0" align="start">
-                      <Command>
-                        <CommandInput placeholder="Buscar estado..." />
-                        <CommandList>
-                          <CommandEmpty>Nenhum estado encontrado.</CommandEmpty>
-                          <CommandGroup>
-                            {ESTADOS.map((estado) => {
-                              const searchableValue = `${estado.label} ${estado.value} ${estado.label.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`;
-                              return (
-                              <CommandItem
-                                key={estado.value}
-                                value={searchableValue}
-                                onSelect={() => {
-                                  setFormData({ ...formData, estado: estado.value })
-                                  setOpenEstado(false)
-                                }}
-                              >
-                                <Check
-                                  className={cn(
-                                    "mr-2 h-4 w-4",
-                                    formData.estado === estado.value ? "opacity-100" : "opacity-0"
-                                  )}
-                                />
-                                {estado.label}
-                              </CommandItem>
-                            )})}
-                          </CommandGroup>
-                        </CommandList>
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-                  <input type="text" name="estado" id="estado" required value={formData.estado} onChange={() => {}} className="absolute opacity-0 w-0 h-0 pointer-events-none left-1/2 bottom-0" tabIndex={-1} />
+                  <div className="relative">
+                    <select id="estado" name="estado" required value={formData.estado} onChange={e => setFormData({...formData, estado: e.target.value})} className="appearance-none w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
+                      <option value="" disabled>UF</option>
+                      {ESTADOS.map(estado => (
+                        <option key={estado.value} value={estado.value}>{estado.label}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="cidade" className="text-sm font-semibold text-[color:var(--brand-ink)]">Cidade*</label>
@@ -204,23 +167,28 @@ function IndiqueLandingPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="corretores" className="text-sm font-semibold text-[color:var(--brand-ink)]">Qtd Corretores*</label>
-                  <select id="corretores" name="corretores" required value={formData.corretores} onChange={e => setFormData({...formData, corretores: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
-                    <option value="" disabled>Selecione</option>
-                    <option value="1 a 3">1 a 3</option>
-                    <option value="4 a 10">4 a 10</option>
-                    <option value="11 a 30">11 a 30</option>
-                    <option value="31 a 50">31 a 50</option>
-                    <option value="Mais de 50">Mais de 50</option>
-                  </select>
+                  <div className="relative">
+                    <select id="corretores" name="corretores" required value={formData.corretores} onChange={e => setFormData({...formData, corretores: e.target.value})} className="appearance-none w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
+                      <option value="" disabled>Selecione</option>
+                      <option value="1 a 3">1 a 3</option>
+                      <option value="4 a 10">4 a 10</option>
+                      <option value="11 a 20">11 a 20</option>
+                      <option value="Mais de 20">Mais de 20</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="usacrm" className="text-sm font-semibold text-[color:var(--brand-ink)]">Usa CRM?*</label>
-                  <select id="usacrm" name="usacrm" required value={formData.usaCrm} onChange={e => setFormData({...formData, usaCrm: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
-                    <option value="" disabled>Selecione</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
-                  </select>
+                  <div className="relative">
+                    <select id="usacrm" name="usacrm" required value={formData.usaCrm} onChange={e => setFormData({...formData, usaCrm: e.target.value})} className="appearance-none w-full px-4 py-3 rounded-xl border border-[color:var(--brand-ink)]/10 bg-white text-[color:var(--brand-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-clay)] transition">
+                      <option value="" disabled>Selecione</option>
+                      <option value="Sim">Sim</option>
+                      <option value="Não">Não</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
+                  </div>
                 </div>
               </div>
 
