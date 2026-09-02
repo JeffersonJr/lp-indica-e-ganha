@@ -9,79 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
-import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
-import { Route as PoliticaDeCookiesRouteImport } from './routes/politica-de-cookies'
-import { Route as ObrigadoCorretorRouteImport } from './routes/obrigado-corretor'
-import { Route as ObrigadoRouteImport } from './routes/obrigado'
-import { Route as NovidadesRouteImport } from './routes/novidades'
-import { Route as DiaCorretorRouteImport } from './routes/dia-corretor'
-import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as MateriaisIndexRouteImport } from './routes/materiais.index'
 import { Route as IndicaEGanhaIndexRouteImport } from './routes/indica-e-ganha.index'
-import { Route as MateriaisSlugRouteImport } from './routes/materiais.$slug'
 import { Route as IndiqueCodigoRouteImport } from './routes/indique.$codigo'
 import { Route as IndicaEGanhaSucessoRouteImport } from './routes/indica-e-ganha.sucesso'
 
-const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
-  id: '/termos-de-uso',
-  path: '/termos-de-uso',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
-  id: '/politica-de-privacidade',
-  path: '/politica-de-privacidade',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PoliticaDeCookiesRoute = PoliticaDeCookiesRouteImport.update({
-  id: '/politica-de-cookies',
-  path: '/politica-de-cookies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ObrigadoCorretorRoute = ObrigadoCorretorRouteImport.update({
-  id: '/obrigado-corretor',
-  path: '/obrigado-corretor',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ObrigadoRoute = ObrigadoRouteImport.update({
-  id: '/obrigado',
-  path: '/obrigado',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NovidadesRoute = NovidadesRouteImport.update({
-  id: '/novidades',
-  path: '/novidades',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DiaCorretorRoute = DiaCorretorRouteImport.update({
-  id: '/dia-corretor',
-  path: '/dia-corretor',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContatoRoute = ContatoRouteImport.update({
-  id: '/contato',
-  path: '/contato',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MateriaisIndexRoute = MateriaisIndexRouteImport.update({
-  id: '/materiais/',
-  path: '/materiais/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndicaEGanhaIndexRoute = IndicaEGanhaIndexRouteImport.update({
   id: '/indica-e-ganha/',
   path: '/indica-e-ganha/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MateriaisSlugRoute = MateriaisSlugRouteImport.update({
-  id: '/materiais/$slug',
-  path: '/materiais/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndiqueCodigoRoute = IndiqueCodigoRouteImport.update({
@@ -97,179 +37,49 @@ const IndicaEGanhaSucessoRoute = IndicaEGanhaSucessoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/contato': typeof ContatoRoute
-  '/dia-corretor': typeof DiaCorretorRoute
-  '/novidades': typeof NovidadesRoute
-  '/obrigado': typeof ObrigadoRoute
-  '/obrigado-corretor': typeof ObrigadoCorretorRoute
-  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
-  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/termos-de-uso': typeof TermosDeUsoRoute
   '/indica-e-ganha/sucesso': typeof IndicaEGanhaSucessoRoute
   '/indique/$codigo': typeof IndiqueCodigoRoute
-  '/materiais/$slug': typeof MateriaisSlugRoute
   '/indica-e-ganha/': typeof IndicaEGanhaIndexRoute
-  '/materiais/': typeof MateriaisIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/contato': typeof ContatoRoute
-  '/dia-corretor': typeof DiaCorretorRoute
-  '/novidades': typeof NovidadesRoute
-  '/obrigado': typeof ObrigadoRoute
-  '/obrigado-corretor': typeof ObrigadoCorretorRoute
-  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
-  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/termos-de-uso': typeof TermosDeUsoRoute
   '/indica-e-ganha/sucesso': typeof IndicaEGanhaSucessoRoute
   '/indique/$codigo': typeof IndiqueCodigoRoute
-  '/materiais/$slug': typeof MateriaisSlugRoute
   '/indica-e-ganha': typeof IndicaEGanhaIndexRoute
-  '/materiais': typeof MateriaisIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/contato': typeof ContatoRoute
-  '/dia-corretor': typeof DiaCorretorRoute
-  '/novidades': typeof NovidadesRoute
-  '/obrigado': typeof ObrigadoRoute
-  '/obrigado-corretor': typeof ObrigadoCorretorRoute
-  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
-  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/termos-de-uso': typeof TermosDeUsoRoute
   '/indica-e-ganha/sucesso': typeof IndicaEGanhaSucessoRoute
   '/indique/$codigo': typeof IndiqueCodigoRoute
-  '/materiais/$slug': typeof MateriaisSlugRoute
   '/indica-e-ganha/': typeof IndicaEGanhaIndexRoute
-  '/materiais/': typeof MateriaisIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/contato'
-    | '/dia-corretor'
-    | '/novidades'
-    | '/obrigado'
-    | '/obrigado-corretor'
-    | '/politica-de-cookies'
-    | '/politica-de-privacidade'
-    | '/termos-de-uso'
     | '/indica-e-ganha/sucesso'
     | '/indique/$codigo'
-    | '/materiais/$slug'
     | '/indica-e-ganha/'
-    | '/materiais/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/contato'
-    | '/dia-corretor'
-    | '/novidades'
-    | '/obrigado'
-    | '/obrigado-corretor'
-    | '/politica-de-cookies'
-    | '/politica-de-privacidade'
-    | '/termos-de-uso'
-    | '/indica-e-ganha/sucesso'
-    | '/indique/$codigo'
-    | '/materiais/$slug'
-    | '/indica-e-ganha'
-    | '/materiais'
+  to: '/' | '/indica-e-ganha/sucesso' | '/indique/$codigo' | '/indica-e-ganha'
   id:
     | '__root__'
     | '/'
-    | '/contato'
-    | '/dia-corretor'
-    | '/novidades'
-    | '/obrigado'
-    | '/obrigado-corretor'
-    | '/politica-de-cookies'
-    | '/politica-de-privacidade'
-    | '/termos-de-uso'
     | '/indica-e-ganha/sucesso'
     | '/indique/$codigo'
-    | '/materiais/$slug'
     | '/indica-e-ganha/'
-    | '/materiais/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ContatoRoute: typeof ContatoRoute
-  DiaCorretorRoute: typeof DiaCorretorRoute
-  NovidadesRoute: typeof NovidadesRoute
-  ObrigadoRoute: typeof ObrigadoRoute
-  ObrigadoCorretorRoute: typeof ObrigadoCorretorRoute
-  PoliticaDeCookiesRoute: typeof PoliticaDeCookiesRoute
-  PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
-  TermosDeUsoRoute: typeof TermosDeUsoRoute
   IndicaEGanhaSucessoRoute: typeof IndicaEGanhaSucessoRoute
   IndiqueCodigoRoute: typeof IndiqueCodigoRoute
-  MateriaisSlugRoute: typeof MateriaisSlugRoute
   IndicaEGanhaIndexRoute: typeof IndicaEGanhaIndexRoute
-  MateriaisIndexRoute: typeof MateriaisIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/termos-de-uso': {
-      id: '/termos-de-uso'
-      path: '/termos-de-uso'
-      fullPath: '/termos-de-uso'
-      preLoaderRoute: typeof TermosDeUsoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/politica-de-privacidade': {
-      id: '/politica-de-privacidade'
-      path: '/politica-de-privacidade'
-      fullPath: '/politica-de-privacidade'
-      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/politica-de-cookies': {
-      id: '/politica-de-cookies'
-      path: '/politica-de-cookies'
-      fullPath: '/politica-de-cookies'
-      preLoaderRoute: typeof PoliticaDeCookiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/obrigado-corretor': {
-      id: '/obrigado-corretor'
-      path: '/obrigado-corretor'
-      fullPath: '/obrigado-corretor'
-      preLoaderRoute: typeof ObrigadoCorretorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/obrigado': {
-      id: '/obrigado'
-      path: '/obrigado'
-      fullPath: '/obrigado'
-      preLoaderRoute: typeof ObrigadoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/novidades': {
-      id: '/novidades'
-      path: '/novidades'
-      fullPath: '/novidades'
-      preLoaderRoute: typeof NovidadesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dia-corretor': {
-      id: '/dia-corretor'
-      path: '/dia-corretor'
-      fullPath: '/dia-corretor'
-      preLoaderRoute: typeof DiaCorretorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contato': {
-      id: '/contato'
-      path: '/contato'
-      fullPath: '/contato'
-      preLoaderRoute: typeof ContatoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -277,25 +87,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/materiais/': {
-      id: '/materiais/'
-      path: '/materiais'
-      fullPath: '/materiais/'
-      preLoaderRoute: typeof MateriaisIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/indica-e-ganha/': {
       id: '/indica-e-ganha/'
       path: '/indica-e-ganha'
       fullPath: '/indica-e-ganha/'
       preLoaderRoute: typeof IndicaEGanhaIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/materiais/$slug': {
-      id: '/materiais/$slug'
-      path: '/materiais/$slug'
-      fullPath: '/materiais/$slug'
-      preLoaderRoute: typeof MateriaisSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/indique/$codigo': {
@@ -317,19 +113,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ContatoRoute: ContatoRoute,
-  DiaCorretorRoute: DiaCorretorRoute,
-  NovidadesRoute: NovidadesRoute,
-  ObrigadoRoute: ObrigadoRoute,
-  ObrigadoCorretorRoute: ObrigadoCorretorRoute,
-  PoliticaDeCookiesRoute: PoliticaDeCookiesRoute,
-  PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
-  TermosDeUsoRoute: TermosDeUsoRoute,
   IndicaEGanhaSucessoRoute: IndicaEGanhaSucessoRoute,
   IndiqueCodigoRoute: IndiqueCodigoRoute,
-  MateriaisSlugRoute: MateriaisSlugRoute,
   IndicaEGanhaIndexRoute: IndicaEGanhaIndexRoute,
-  MateriaisIndexRoute: MateriaisIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

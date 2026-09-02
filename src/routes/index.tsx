@@ -73,9 +73,9 @@ function IndicaEGanhaIndex() {
             </div>
 
             <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-5xl lg:text-6xl">
-              Conhece uma imobiliária que{" "}
-              <span className="text-[#5AA6A6]">precisa evoluir?</span> Indique e
-              ganhe descontos.
+              Transforme suas indicações em{" "}
+              <span className="text-[#5AA6A6]">economia real!</span> Ganhe 10% de
+              desconto a cada nova imobiliária.
             </h1>
 
             <p className="mx-auto mb-8 max-w-2xl text-lg text-[#6B7878] md:text-xl">
