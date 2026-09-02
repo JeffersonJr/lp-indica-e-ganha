@@ -126,6 +126,22 @@ export const sendIndicadorToClickUp = createServerFn({ method: "POST" })
 **Código de Indicação Gerado:** ${data.codigo}
     `.trim();
 
+    const customFields = [];
+
+    if (data.telefone) {
+      customFields.push({
+        id: "18b57b65-8a2a-41e4-8114-d4a5e4945f56", // Telefone
+        value: data.telefone,
+      });
+    }
+
+    if (data.email) {
+      customFields.push({
+        id: "9902a72d-5372-40c6-b579-6d98801f6c49", // E-mail
+        value: data.email,
+      });
+    }
+
     try {
       // 1. Send to ClickUp
       await fetch(`https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`, {
@@ -137,6 +153,7 @@ export const sendIndicadorToClickUp = createServerFn({ method: "POST" })
         body: JSON.stringify({
           name: taskName,
           description: taskDescription,
+          custom_fields: customFields,
           tags: ["indicador", "indique-e-ganha-setembro"]
         })
       });
@@ -219,6 +236,22 @@ Usa CRM: ${data.usaCrm || "Não informado"}
 Qual CRM: ${data.qualCrm || "Não informado"}
     `.trim();
 
+    const customFields = [];
+
+    if (data.indicado_telefone) {
+      customFields.push({
+        id: "18b57b65-8a2a-41e4-8114-d4a5e4945f56", // Telefone
+        value: data.indicado_telefone,
+      });
+    }
+
+    if (data.indicado_email) {
+      customFields.push({
+        id: "9902a72d-5372-40c6-b579-6d98801f6c49", // E-mail
+        value: data.indicado_email,
+      });
+    }
+
     try {
       // 1. Send to ClickUp
       await fetch(`https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`, {
@@ -230,6 +263,7 @@ Qual CRM: ${data.qualCrm || "Não informado"}
         body: JSON.stringify({
           name: taskName,
           description: taskDescription,
+          custom_fields: customFields,
           tags: ["indicado", "indique-e-ganha-setembro"]
         })
       });
