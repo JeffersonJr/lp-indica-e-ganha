@@ -3,7 +3,21 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getDoc } from "./sheets";
 
-const CLICKUP_API_TOKEN = process.env.VITE_CLICKUP_API_TOKEN || process.env.CLICKUP_API_TOKEN;
+const getClickUpToken = () => {
+  if (typeof process !== "undefined" && process?.env) {
+    if (process.env.VITE_CLICKUP_API_TOKEN) return process.env.VITE_CLICKUP_API_TOKEN;
+    if (process.env.CLICKUP_API_TOKEN) return process.env.CLICKUP_API_TOKEN;
+  }
+  try {
+    // @ts-ignore
+    if (typeof import.meta !== "undefined" && import.meta.env) {
+      // @ts-ignore
+      return import.meta.env.VITE_CLICKUP_API_TOKEN;
+    }
+  } catch (e) {}
+  return undefined;
+};
+
 const CLICKUP_LIST_ID = "901328205459";
 
 export interface LeadData {
@@ -17,6 +31,7 @@ export interface LeadData {
 export const sendLeadToClickUp = createServerFn({ method: "POST" })
   .inputValidator((lead: LeadData) => lead)
   .handler(async ({ data: lead }) => {
+    const CLICKUP_API_TOKEN = getClickUpToken();
     if (!CLICKUP_API_TOKEN || !CLICKUP_LIST_ID) {
       console.warn("[ClickUp] Missing VITE_CLICKUP_API_TOKEN or CLICKUP_LIST_ID");
       throw new Error("Configuração ausente: Token do ClickUp não encontrado.");
@@ -94,6 +109,7 @@ export interface IndicadorData {
 export const sendIndicadorToClickUp = createServerFn({ method: "POST" })
   .inputValidator((data: IndicadorData) => data)
   .handler(async ({ data }) => {
+    const CLICKUP_API_TOKEN = getClickUpToken();
     if (!CLICKUP_API_TOKEN) {
       console.warn("[ClickUp] Missing CLICKUP_API_TOKEN");
       throw new Error("Configuração ausente: Token do ClickUp não encontrado.");
@@ -171,6 +187,8 @@ export interface IndicacaoData {
 export const sendIndicacaoToClickUp = createServerFn({ method: "POST" })
   .inputValidator((data: IndicacaoData) => data)
   .handler(async ({ data }) => {
+    const CLICKUP_API_TOKEN = getClickUpToken();
+    const listId = "901328205459";
     if (!CLICKUP_API_TOKEN) {
       console.warn("[ClickUp] Missing CLICKUP_API_TOKEN");
       throw new Error("Configuração ausente: Token do ClickUp não encontrado.");
