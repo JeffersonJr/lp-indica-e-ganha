@@ -36,11 +36,7 @@ function IndicaEGanhaSucessoPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-full bg-[color:var(--brand-clay)]/20 blur-[100px] rounded-full pointer-events-none" />
         
         <div className="relative z-10 w-full max-w-md mx-auto">
-          <Link to="/" className="inline-flex items-center gap-2 text-[color:var(--brand-sand)]/70 hover:text-[color:var(--brand-sand)] mb-8 transition decoration-none border-none">
-            <ChevronLeft className="w-4 h-4" />
-            Indicar outra imobiliária
-          </Link>
-          
+
           <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl text-center border border-[color:var(--brand-clay)]/10">
             <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-6 shadow-inner">
               <CheckCircle2 className="w-8 h-8" />
@@ -50,7 +46,8 @@ function IndicaEGanhaSucessoPage() {
               Seu link está pronto 💚
             </h1>
             <p className="text-[color:var(--brand-ink)]/70 mb-8 leading-relaxed">
-              Agora é só compartilhar com aquela imobiliária que deveria conhecer a Microsistec.
+              Agora é só compartilhar com aquela imobiliária que deveria conhecer a Microsistec. <br className="hidden sm:block" />
+              <strong className="text-[color:var(--brand-ink)] font-bold">Dica:</strong> Você pode usar esse mesmo link para indicar quantas imobiliárias quiser!
             </p>
             
             <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 mb-8">

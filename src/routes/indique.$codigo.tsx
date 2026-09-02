@@ -387,6 +387,30 @@ function IndiqueLandingPage() {
           </div>
         </section>
 
+        {/* REGRAS DA CAMPANHA */}
+        <section className="py-16 md:py-24 bg-slate-50 border-t border-slate-100 text-[color:var(--brand-ink)]">
+          <div className="container max-w-4xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Regras da Campanha</h2>
+            <div className="bg-white p-6 md:p-10 rounded-3xl shadow-sm border border-slate-200 text-sm md:text-base text-slate-600 space-y-6 leading-relaxed">
+              <p>
+                <strong className="text-slate-800">1. Sobre o Desconto:</strong> O desconto de 30% concedido através desta indicação aplica-se exclusivamente sobre o valor da <strong>taxa de implantação</strong> do ecossistema Microsistec, não incidindo sobre as mensalidades futuras ou quaisquer outros serviços.
+              </p>
+              <p>
+                <strong className="text-slate-800">2. Cumulatividade:</strong> Este desconto <strong>não é cumulativo</strong>. Por se tratar de uma taxa de adesão/implantação cobrada uma única vez, o benefício é aplicado integralmente no momento da contratação e não pode ser somado a outras promoções vigentes ou convertido em crédito monetário.
+              </p>
+              <p>
+                <strong className="text-slate-800">3. Condição para Validação:</strong> Para ter direito ao benefício de 30% OFF na implantação, a imobiliária indicada <strong>não pode ser ou já ter sido cliente ativo</strong> da Microsistec. A oferta é estritamente válida para novas contratações.
+              </p>
+              <p>
+                <strong className="text-slate-800">4. Lei Geral de Proteção de Dados (LGPD):</strong> Ao preencher o formulário, você concorda com nossas Políticas de Privacidade e atesta ciência sobre o tratamento de seus dados, em cumprimento à Lei nº 13.709/2018 (LGPD). Suas informações serão protegidas e utilizadas exclusivamente para fins de atendimento comercial.
+              </p>
+              <p>
+                <strong className="text-slate-800">5. Disposições Finais:</strong> A Microsistec reserva-se o direito de auditar a legitimidade da indicação, checar o histórico da imobiliária e encerrar ou modificar os termos desta campanha a qualquer momento. Oferta sujeita à análise comercial e regida em conformidade com o Código de Defesa do Consumidor (Lei nº 8.078/1990).
+              </p>
+            </div>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </div>
