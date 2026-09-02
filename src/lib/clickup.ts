@@ -1,3 +1,5 @@
+"use server";
+
 /**
  * Client-side helper that sends lead data directly to the ClickUp API.
  *
@@ -97,6 +99,10 @@ export interface IndicacaoData {
   indicado_responsavel: string;
   indicado_telefone: string;
   indicado_email: string;
+  cidade?: string;
+  corretores?: string;
+  usaCrm?: string;
+  qualCrm?: string;
 }
 
 export const sendIndicacaoToClickUp = createServerFn({ method: "POST" })
@@ -121,6 +127,12 @@ Nome da Imobiliária: ${data.indicado_nome}
 Pessoa Responsável: ${data.indicado_responsavel}
 Telefone: ${data.indicado_telefone}
 E-mail: ${data.indicado_email}
+
+📍 INFORMAÇÕES EXTRAS
+Cidade: ${data.cidade || "Não informado"}
+Corretores: ${data.corretores || "Não informado"}
+Usa CRM: ${data.usaCrm || "Não informado"}
+Qual CRM: ${data.qualCrm || "Não informado"}
     `.trim();
 
     const response = await fetch(

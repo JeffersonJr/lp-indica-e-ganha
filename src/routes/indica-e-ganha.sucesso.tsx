@@ -12,7 +12,12 @@ function IndicaEGanhaSucessoPage() {
   const uniqueCode = search.code || "MS" + Math.floor(1000 + Math.random() * 9000);
   
   const [copied, setCopied] = useState(false);
-  const shareLink = `microsistec.com.br/indique/${uniqueCode}`;
+  
+  const origin = typeof window !== 'undefined' 
+    ? window.location.origin 
+    : 'https://lp-indica.microsistec.com.br';
+    
+  const shareLink = `${origin}/indique/${uniqueCode}`;
   
   const whatsappMessage = `Oi! Lembrei de vocês porque estou participando de uma campanha da Microsistec e achei que poderia fazer sentido para a imobiliária.\n\nEles trabalham com CRM, site de alta performance e inteligência artificial para atendimento.\n\nEstou te enviando meu link de indicação para você conhecer:\n${shareLink}`;
 

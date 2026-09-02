@@ -4,6 +4,8 @@ import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2 } from "lucide-
 import { SimpleNav as Header, SimpleFooter as Footer } from "../components/microsistec/MicrosistecLanding";
 import { phoneMask } from "../lib/utils";
 
+import { sendIndicacaoToClickUp } from "../lib/clickup";
+
 export const Route = createFileRoute("/indique/$codigo")({
   component: IndiqueLandingPage,
 });
@@ -32,38 +34,20 @@ function IndiqueLandingPage() {
     setIsSubmitting(true);
     
     try {
-      const CLICKUP_LIST_ID = "901328205459";
-      const API_TOKEN = import.meta.env.VITE_CLICKUP_API_TOKEN;
-      
-      const taskName = `Indicado: ${formData.imobiliaria} (${codigo})`;
-      const taskDescription = `
-**Tipo:** Indicado
-**Campanha:** Indique e Ganha Setembro
-**Código da Indicação (Origem):** ${codigo}
-
-**Imobiliária:** ${formData.imobiliaria}
-**Responsável:** ${formData.responsavel}
-**WhatsApp:** ${formData.whatsapp}
-**Email:** ${formData.email}
-**Cidade / Estado:** ${formData.cidade}
-
-**Qualificação:**
-- Corretores: ${formData.corretores}
-- Usa CRM: ${formData.usaCrm}
-- Qual CRM: ${formData.qualCrm || "Não se aplica"}
-      `;
-
-      await fetch(`https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`, {
-        method: "POST",
-        headers: { 
-          "Authorization": API_TOKEN,
-          "Content-Type": "application/json" 
-        },
-        body: JSON.stringify({
-          name: taskName,
-          description: taskDescription,
-          tags: ["indicado", "indique-e-ganha-setembro"]
-        })
+      await sendIndicacaoToClickUp({
+        data: {
+          indicador_nome: codigo,
+          indicador_telefone: "Não informado",
+          indicador_email: "Não informado",
+          indicado_nome: formData.imobiliaria,
+          indicado_responsavel: formData.responsavel,
+          indicado_telefone: formData.whatsapp,
+          indicado_email: formData.email,
+          cidade: formData.cidade,
+          corretores: formData.corretores,
+          usaCrm: formData.usaCrm,
+          qualCrm: formData.qualCrm
+        }
       });
     } catch (err) {
       console.error("Erro ao enviar para webhook", err);
