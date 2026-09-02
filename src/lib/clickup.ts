@@ -127,21 +127,26 @@ export const sendIndicadorToClickUp = createServerFn({ method: "POST" })
 
       // 2. Send to Google Sheets
       const doc = await getDoc();
-      // Tentamos achar a aba 'Indicadores', se não existir pegamos a primeira aba
       let sheet = doc.sheetsByTitle['Indicadores'];
       if (!sheet) sheet = doc.sheetsByIndex[0];
       
       if (sheet) {
+        try {
+          await sheet.loadHeaderRow();
+        } catch (e) {
+          await sheet.setHeaderRow(["Data", "Imobiliaria", "Responsavel", "Telefone", "Email", "Codigo"]);
+        }
+
         // Data formatada
         const date = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
-        await sheet.addRow([
-          date,
-          data.imobiliaria,
-          data.responsavel,
-          data.telefone,
-          data.email,
-          data.codigo
-        ]);
+        await sheet.addRow({
+          "Data": date,
+          "Imobiliaria": data.imobiliaria,
+          "Responsavel": data.responsavel,
+          "Telefone": data.telefone,
+          "Email": data.email,
+          "Codigo": data.codigo
+        });
       }
     } catch (err) {
       console.error("Erro ao enviar Indicador:", err);
@@ -208,24 +213,32 @@ Qual CRM: ${data.qualCrm || "Não informado"}
 
       // 2. Send to Google Sheets
       const doc = await getDoc();
-      // Tentamos achar a aba 'Indicados', se não existir pegamos a segunda aba (índice 1) ou a primeira se só tiver uma
       let sheet = doc.sheetsByTitle['Indicados'];
       if (!sheet) sheet = doc.sheetsByIndex[1] || doc.sheetsByIndex[0];
       
       if (sheet) {
+        try {
+          await sheet.loadHeaderRow();
+        } catch (e) {
+          await sheet.setHeaderRow([
+            "Data", "CodigoIndicador", "ImobiliariaIndicada", "Responsavel", 
+            "Telefone", "Email", "Cidade", "Corretores", "UsaCRM", "QualCRM"
+          ]);
+        }
+
         const date = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
-        await sheet.addRow([
-          date,
-          data.indicador_nome, // código de quem indicou
-          data.indicado_nome,
-          data.indicado_responsavel,
-          data.indicado_telefone,
-          data.indicado_email,
-          data.cidade || "",
-          data.corretores || "",
-          data.usaCrm || "",
-          data.qualCrm || ""
-        ]);
+        await sheet.addRow({
+          "Data": date,
+          "CodigoIndicador": data.indicador_nome,
+          "ImobiliariaIndicada": data.indicado_nome,
+          "Responsavel": data.indicado_responsavel,
+          "Telefone": data.indicado_telefone,
+          "Email": data.indicado_email,
+          "Cidade": data.cidade || "",
+          "Corretores": data.corretores || "",
+          "UsaCRM": data.usaCrm || "",
+          "QualCRM": data.qualCrm || ""
+        });
       }
     } catch (err) {
       console.error("Erro ao enviar Indicação:", err);
