@@ -61,7 +61,7 @@ function IndiqueLandingPage() {
     document.getElementById('qualificacao')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const FormContent = () => (
+  const renderFormContent = () => (
     <div className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl relative border border-[color:var(--brand-clay)]/10 text-left">
       <div className="absolute -top-4 -right-4 w-24 h-24 bg-[color:var(--brand-orange)] rounded-full blur-[40px] opacity-20 pointer-events-none" />
       <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[color:var(--brand-clay)] rounded-full blur-[40px] opacity-20 pointer-events-none" />
@@ -198,7 +198,7 @@ function IndiqueLandingPage() {
 
             {/* FORM CARD IN HERO (Desktop) / TOP FORM */}
             <div className="hidden lg:block">
-              <FormContent />
+              {renderFormContent()}
             </div>
           </div>
         </section>
@@ -276,7 +276,7 @@ function IndiqueLandingPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-ink)] mb-4">Pronto para transformar sua imobiliária?</h2>
             <p className="text-lg text-slate-600 mb-12">Nossos especialistas estão prontos para te apresentar a Microsistec.</p>
             
-            <FormContent />
+            {renderFormContent()}
           </div>
         </section>
 
