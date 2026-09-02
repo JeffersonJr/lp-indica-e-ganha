@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2, Gift } from "lucide-react";
 import { SimpleNav as Header, SimpleFooter as Footer } from "../components/microsistec/MicrosistecLanding";
 import { phoneMask } from "../lib/utils";
 
@@ -57,46 +57,137 @@ function IndiqueLandingPage() {
     }
   };
 
-  const scrollToForm = () => {
-    document.getElementById('qualificacao')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans selection:bg-[color:var(--brand-teal)] selection:text-white">
       <Header />
       <main className="flex-1">
         
-        {/* HERO SECTION */}
+        {/* HERO SECTION WITH FORM */}
         <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-4 bg-[color:var(--brand-ink)] text-[color:var(--brand-sand)] relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-full bg-[color:var(--brand-clay)]/20 blur-[150px] rounded-full pointer-events-none" />
           
-          <div className="container max-w-5xl mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
-              Tecnologia para imobiliárias que querem vender mais e operar melhor.
-            </h1>
-            <p className="text-xl md:text-2xl text-[color:var(--brand-sand)]/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Centralize sua operação, gere mais oportunidades e automatize seu atendimento com o ecossistema Microsistec.
-            </p>
-            
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm md:text-base font-semibold text-[color:var(--brand-teal)] mb-12">
-              <span className="flex items-center gap-2"><Database className="w-5 h-5"/> CRM</span>
-              <span className="text-[color:var(--brand-sand)]/30">+</span>
-              <span className="flex items-center gap-2"><Globe className="w-5 h-5"/> Site</span>
-              <span className="text-[color:var(--brand-sand)]/30">+</span>
-              <span className="flex items-center gap-2"><Bot className="w-5 h-5"/> Inteligência Artificial</span>
+          <div className="container max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-center relative z-10">
+            <div className="text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[color:var(--brand-clay)]/20 text-[color:var(--brand-teal)] font-semibold text-sm mb-6 border border-[color:var(--brand-clay)]/30">
+                <Gift className="w-4 h-4" />
+                <span>Indicação Especial</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+                Tecnologia para imobiliárias que querem vender mais e operar melhor.
+              </h1>
+              <p className="text-lg md:text-xl text-[color:var(--brand-sand)]/80 mb-10 leading-relaxed">
+                Centralize sua operação, gere mais oportunidades e automatize seu atendimento com o ecossistema Microsistec.<br/><br/>
+                <strong className="text-white">Você foi indicado para conhecer nossa solução!</strong> Preencha o formulário para falar com nossos especialistas.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 text-sm md:text-base font-semibold text-[color:var(--brand-teal)]">
+                <span className="flex items-center gap-2"><Database className="w-5 h-5"/> CRM</span>
+                <span className="hidden sm:inline text-[color:var(--brand-sand)]/30">+</span>
+                <span className="flex items-center gap-2"><Globe className="w-5 h-5"/> Site</span>
+                <span className="hidden sm:inline text-[color:var(--brand-sand)]/30">+</span>
+                <span className="flex items-center gap-2"><Bot className="w-5 h-5"/> Inteligência Artificial</span>
+              </div>
             </div>
 
-            <button
-              onClick={scrollToForm}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[color:var(--brand-orange)] text-[color:var(--brand-ink)] px-8 py-5 font-bold text-lg hover:opacity-90 transition cursor-pointer border-none shadow-[0_10px_30px_-10px_rgba(232,161,75,0.4)]"
-            >
-              QUERO CONHECER <ArrowRight className="w-5 h-5" />
-            </button>
+            {/* FORM CARD */}
+            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl relative border border-[color:var(--brand-clay)]/10 text-left">
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-[color:var(--brand-orange)] rounded-full blur-[40px] opacity-20 pointer-events-none" />
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[color:var(--brand-clay)] rounded-full blur-[40px] opacity-20 pointer-events-none" />
+              
+              <div className="relative z-10">
+                <h2 className="text-2xl font-bold text-[color:var(--brand-ink)] mb-2">Falar com Especialista</h2>
+                <p className="text-[color:var(--brand-ink)]/70 mb-6 text-sm">Nossa equipe apresentará a solução ideal para você.</p>
+                
+                {isSubmitted ? (
+                  <div className="text-center py-10">
+                    <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-[color:var(--brand-ink)] mb-2">Tudo certo!</h3>
+                    <p className="text-sm text-slate-600">Nosso time entrará em contato em breve para apresentar a Microsistec.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <input type="hidden" name="origem" value={`indicacao_${codigo}`} />
+                    
+                    <div className="grid grid-cols-1 gap-4">
+                      <div className="flex flex-col gap-1">
+                        <label className="text-xs font-semibold text-slate-700">Imobiliária*</label>
+                        <input required type="text" value={formData.imobiliaria} onChange={e => setFormData({...formData, imobiliaria: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                      </div>
+                      
+                      <div className="flex flex-col gap-1">
+                        <label className="text-xs font-semibold text-slate-700">Responsável*</label>
+                        <input required type="text" value={formData.responsavel} onChange={e => setFormData({...formData, responsavel: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1">
+                          <label className="text-xs font-semibold text-slate-700">WhatsApp*</label>
+                          <input required type="tel" value={formData.whatsapp} onChange={e => setFormData({...formData, whatsapp: phoneMask(e.target.value)})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <label className="text-xs font-semibold text-slate-700">E-mail*</label>
+                          <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col gap-1">
+                        <label className="text-xs font-semibold text-slate-700">Cidade / Estado*</label>
+                        <input required type="text" value={formData.cidade} onChange={e => setFormData({...formData, cidade: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1">
+                          <label className="text-xs font-semibold text-slate-700">Qtd Corretores*</label>
+                          <select required value={formData.corretores} onChange={e => setFormData({...formData, corretores: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)] bg-white">
+                            <option value="" disabled>Selecione</option>
+                            <option value="1 a 3">1 a 3</option>
+                            <option value="4 a 10">4 a 10</option>
+                            <option value="11 a 30">11 a 30</option>
+                            <option value="31 a 50">31 a 50</option>
+                            <option value="Mais de 50">Mais de 50</option>
+                          </select>
+                        </div>
+
+                        <div className="flex flex-col gap-1">
+                          <label className="text-xs font-semibold text-slate-700">Usa CRM?*</label>
+                          <select required value={formData.usaCrm} onChange={e => setFormData({...formData, usaCrm: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)] bg-white">
+                            <option value="" disabled>Selecione</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {formData.usaCrm === "Sim" && (
+                        <div className="flex flex-col gap-1">
+                          <label className="text-xs font-semibold text-slate-700">Qual CRM? (Opcional)</label>
+                          <input type="text" value={formData.qualCrm} onChange={e => setFormData({...formData, qualCrm: e.target.value})} className="px-3 py-2 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] text-[color:var(--brand-ink)]" />
+                        </div>
+                      )}
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full mt-2 bg-[color:var(--brand-orange)] text-[color:var(--brand-ink)] hover:opacity-90 font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition cursor-pointer border-none shadow-lg text-sm active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? (
+                        <>ENVIANDO... <Loader2 className="w-5 h-5 animate-spin" /></>
+                      ) : (
+                        <>QUERO CONHECER <ArrowRight className="w-5 h-5" /></>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
           </div>
         </section>
 
         {/* ECOSSISTEMA MESSAGE */}
-        <section className="py-16 md:py-24 px-4 bg-white">
+        <section className="py-16 md:py-24 px-4 bg-white border-b border-slate-100">
           <div className="container max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[color:var(--brand-ink)] leading-[1.2]">
               <span className="text-[color:var(--brand-clay)]">O Site encontra.</span><br/>
@@ -108,7 +199,7 @@ function IndiqueLandingPage() {
         </section>
 
         {/* SECTIONS */}
-        <section className="py-20 bg-slate-50 border-y border-slate-100">
+        <section className="py-20 bg-slate-50">
           <div className="container max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
             
             <div className="flex flex-col gap-4">
@@ -162,111 +253,6 @@ function IndiqueLandingPage() {
           </div>
         </section>
 
-        {/* FORM QUALIFICACAO */}
-        <section id="qualificacao" className="py-24 px-4 bg-white relative">
-          <div className="container max-w-3xl mx-auto relative z-10">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-ink)] mb-4">Vamos entender melhor sua imobiliária?</h2>
-              <p className="text-lg text-slate-600">Preencha os dados abaixo e nosso time apresenta a solução mais adequada para sua operação.</p>
-            </div>
-
-            <div className="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border border-slate-100 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-2 bg-[color:var(--brand-teal)]" />
-              
-              {isSubmitted ? (
-                <div className="text-center py-16">
-                  <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 className="w-10 h-10" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-[color:var(--brand-ink)] mb-4">Tudo certo!</h3>
-                  <p className="text-lg text-slate-600">Nosso time entrará em contato em breve para apresentar a Microsistec.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-                  {/* Origin hidden field */}
-                  <input type="hidden" name="origem" value={`indicacao_${codigo}`} />
-                  
-                  <div className="space-y-5">
-                    <h3 className="text-xl font-bold text-[color:var(--brand-ink)] border-b border-slate-100 pb-2">Dados Principais</h3>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-semibold text-slate-700">Nome da imobiliária*</label>
-                        <input required type="text" value={formData.imobiliaria} onChange={e => setFormData({...formData, imobiliaria: e.target.value})} className="px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] transition" />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-semibold text-slate-700">Nome do responsável*</label>
-                        <input required type="text" value={formData.responsavel} onChange={e => setFormData({...formData, responsavel: e.target.value})} className="px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] transition" />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-semibold text-slate-700">WhatsApp*</label>
-                        <input required type="tel" value={formData.whatsapp} onChange={e => setFormData({...formData, whatsapp: phoneMask(e.target.value)})} className="px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] transition" />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-semibold text-slate-700">E-mail*</label>
-                        <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] transition" />
-                      </div>
-                      <div className="flex flex-col gap-1.5 md:col-span-2">
-                        <label className="text-sm font-semibold text-slate-700">Cidade / Estado*</label>
-                        <input required type="text" value={formData.cidade} onChange={e => setFormData({...formData, cidade: e.target.value})} className="px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] transition" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-5">
-                    <h3 className="text-xl font-bold text-[color:var(--brand-ink)] border-b border-slate-100 pb-2">Qualificação</h3>
-                    
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-slate-700">Quantos corretores trabalham atualmente na imobiliária?*</label>
-                      <select required value={formData.corretores} onChange={e => setFormData({...formData, corretores: e.target.value})} className="px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] transition bg-white">
-                        <option value="" disabled>Selecione uma opção</option>
-                        <option value="1 a 3">1 a 3</option>
-                        <option value="4 a 10">4 a 10</option>
-                        <option value="11 a 30">11 a 30</option>
-                        <option value="31 a 50">31 a 50</option>
-                        <option value="Mais de 50">Mais de 50</option>
-                      </select>
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-slate-700">Atualmente vocês utilizam algum CRM imobiliário?*</label>
-                      <select required value={formData.usaCrm} onChange={e => setFormData({...formData, usaCrm: e.target.value})} className="px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] transition bg-white">
-                        <option value="" disabled>Selecione uma opção</option>
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
-                      </select>
-                    </div>
-
-                    {formData.usaCrm === "Sim" && (
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-sm font-semibold text-slate-700">Qual CRM utilizam atualmente? (Opcional)</label>
-                        <input type="text" value={formData.qualCrm} onChange={e => setFormData({...formData, qualCrm: e.target.value})} className="px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] transition" />
-                      </div>
-                    )}
-
-                  </div>
-
-                  <div className="pt-4 border-t border-slate-100">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-[color:var(--brand-orange)] text-[color:var(--brand-ink)] hover:opacity-90 font-bold py-5 rounded-2xl flex items-center justify-center gap-2 transition cursor-pointer border-none shadow-lg text-lg active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? (
-                        <>ENVIANDO... <Loader2 className="w-6 h-6 animate-spin" /></>
-                      ) : (
-                        <>QUERO CONHECER A MICROSISTEC <ArrowRight className="w-6 h-6" /></>
-                      )}
-                    </button>
-                    <p className="text-center text-sm text-slate-500 mt-4">
-                      Nosso time entrará em contato para entender sua operação e apresentar a melhor solução.
-                    </p>
-                  </div>
-                </form>
-              )}
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>
