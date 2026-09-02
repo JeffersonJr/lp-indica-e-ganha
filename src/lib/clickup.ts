@@ -262,6 +262,13 @@ Qual CRM: ${data.qualCrm || "Não informado"}
       });
     }
 
+    if (data.cidade) {
+      customFields.push({
+        id: "a1e9110e-349a-49ca-b4cb-51c75bb19466", // Cidade
+        value: data.cidade,
+      });
+    }
+
     try {
       // 1. Send to ClickUp
       await fetch(`https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`, {

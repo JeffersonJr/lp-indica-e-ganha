@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2, Gift, Check, ChevronsUpDown, ChevronDown } from "lucide-react";
+import { ArrowRight, Bot, Database, Globe, CheckCircle2, Loader2, Gift, Check, ChevronsUpDown, ChevronDown, TrendingUp } from "lucide-react";
 import { SimpleNav as Header, SimpleFooter as Footer } from "../components/microsistec/MicrosistecLanding";
 import { cn, phoneMask } from "../lib/utils";
 import { Button } from "@/components/ui/button";
@@ -265,14 +265,60 @@ function IndiqueLandingPage() {
         </section>
 
         {/* ECOSSISTEMA MESSAGE */}
-        <section className="py-16 md:py-24 px-4 bg-white border-b border-slate-100">
-          <div className="container max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[color:var(--brand-ink)] leading-[1.2]">
-              <span className="text-[color:var(--brand-clay)]">O Site encontra.</span><br/>
-              <span className="text-[color:var(--brand-orange)]">O Albert atende.</span><br/>
-              O CRM organiza.<br/>
-              Sua equipe vende.
-            </h2>
+        <section className="py-20 md:py-32 px-4 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[color:var(--brand-clay)]/5 via-white to-white pointer-events-none" />
+          <div className="container max-w-6xl mx-auto relative">
+            
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[color:var(--brand-ink)]">
+                Tudo o que sua imobiliária precisa
+              </h2>
+              <p className="mt-4 text-lg text-slate-600 font-medium">Um ecossistema completo e integrado</p>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-4 lg:gap-8">
+               {/* Step 1 */}
+               <div className="flex flex-1 flex-col items-center gap-4 text-center w-full md:w-auto p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm transition hover:shadow-md">
+                  <div className="w-16 h-16 rounded-2xl bg-[color:var(--brand-clay)]/10 text-[color:var(--brand-clay)] flex items-center justify-center shadow-sm">
+                    <Globe className="w-8 h-8" />
+                  </div>
+                  <span className="text-xl md:text-2xl font-extrabold tracking-tight text-[color:var(--brand-clay)]">O Site encontra.</span>
+               </div>
+               
+               <ArrowRight className="hidden md:block w-8 h-8 text-slate-200 shrink-0" />
+               <ChevronDown className="md:hidden w-8 h-8 text-slate-200 shrink-0" />
+               
+               {/* Step 2 */}
+               <div className="flex flex-1 flex-col items-center gap-4 text-center w-full md:w-auto p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm transition hover:shadow-md">
+                  <div className="w-16 h-16 rounded-2xl bg-[color:var(--brand-orange)]/10 text-[color:var(--brand-orange)] flex items-center justify-center shadow-sm">
+                    <Bot className="w-8 h-8" />
+                  </div>
+                  <span className="text-xl md:text-2xl font-extrabold tracking-tight text-[color:var(--brand-orange)]">O Albert atende.</span>
+               </div>
+               
+               <ArrowRight className="hidden md:block w-8 h-8 text-slate-200 shrink-0" />
+               <ChevronDown className="md:hidden w-8 h-8 text-slate-200 shrink-0" />
+
+               {/* Step 3 */}
+               <div className="flex flex-1 flex-col items-center gap-4 text-center w-full md:w-auto p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm transition hover:shadow-md">
+                  <div className="w-16 h-16 rounded-2xl bg-[color:var(--brand-ink)]/5 text-[color:var(--brand-ink)] flex items-center justify-center shadow-sm">
+                    <Database className="w-8 h-8" />
+                  </div>
+                  <span className="text-xl md:text-2xl font-extrabold tracking-tight text-[color:var(--brand-ink)]">O CRM organiza.</span>
+               </div>
+               
+               <ArrowRight className="hidden md:block w-8 h-8 text-slate-200 shrink-0" />
+               <ChevronDown className="md:hidden w-8 h-8 text-slate-200 shrink-0" />
+
+               {/* Step 4 */}
+               <div className="flex flex-1 flex-col items-center gap-4 text-center w-full md:w-auto p-6 rounded-3xl bg-green-50 border border-green-100 shadow-sm transition hover:shadow-md">
+                  <div className="w-16 h-16 rounded-2xl bg-green-500/10 text-green-600 flex items-center justify-center shadow-sm">
+                    <TrendingUp className="w-8 h-8" />
+                  </div>
+                  <span className="text-xl md:text-2xl font-extrabold tracking-tight text-green-700">Sua equipe vende.</span>
+               </div>
+            </div>
+
           </div>
         </section>
 
