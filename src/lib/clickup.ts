@@ -126,7 +126,12 @@ export const sendIndicadorToClickUp = createServerFn({ method: "POST" })
 **Código de Indicação Gerado:** ${data.codigo}
     `.trim();
 
-    const customFields = [];
+    const customFields = [
+      {
+        id: "f725c50d-fec4-4c0a-b840-f1dcbd0a0a0c", // Campanha
+        value: "LP Indique e Ganhe",
+      }
+    ];
 
     if (data.telefone) {
       customFields.push({
@@ -236,7 +241,12 @@ Usa CRM: ${data.usaCrm || "Não informado"}
 Qual CRM: ${data.qualCrm || "Não informado"}
     `.trim();
 
-    const customFields = [];
+    const customFields = [
+      {
+        id: "f725c50d-fec4-4c0a-b840-f1dcbd0a0a0c", // Campanha
+        value: "LP Indique e Ganhe",
+      }
+    ];
 
     if (data.indicado_telefone) {
       customFields.push({
