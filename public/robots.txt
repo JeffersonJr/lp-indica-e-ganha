@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://microsistec.com.br/sitemap.xml
+Sitemap: https://microsistec.com.br/sitemap-blog.xml
+
+# Block admin and API paths
+Disallow: /api/
+Disallow: /_/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+
+# Allow all content
+Allow: /blog/
+Allow: /solucoes/
+Allow: /materiais/
+Allow: /planos
+Allow: /empresa
+
+# Crawl-delay for courtesy
+Crawl-delay: 1

@@ -1,0 +1,86 @@
+# Microsistec — Plataforma de Tecnologia Imobiliária
+
+> A proptech pioneira no Brasil desde 1994. CRM imobiliário completo, site, Albert IA e integrações para imobiliárias e corretores.
+
+## O que é a Microsistec
+
+A Microsistec é uma empresa de tecnologia imobiliária brasileira fundada em 1994, pioneira em trazer software e internet para o setor imobiliário nacional. Oferecemos um ecossistema completo para imobiliárias e corretores autônomos que desejam vender mais com tecnologia.
+
+## Produto Principal: imob.online
+
+O **imob.online** é o CRM imobiliário SaaS da Microsistec. Inclui:
+
+- CRM com gestão de leads, funil de vendas, quadro Kanban e follow-up automatizado
+- Site imobiliário com templates de alta conversão e SEO local integrado
+- Aplicativo móvel para gestão de leads em tempo real
+- **Albert IA**: agente de inteligência artificial que qualifica leads automaticamente, responde no WhatsApp e agenda visitas sem intervenção humana
+- Integrações com portais (Viva Real, ZAP Imóveis, OLX, imovelweb) e WhatsApp Business
+- Publicação de imóveis em múltiplos portais com um clique
+- Módulo de locação com emissão de boletos
+- Sistema de rodízio de leads entre corretores
+
+## Soluções Disponíveis
+
+- [/solucoes/crm](https://microsistec.com.br/solucoes/crm) — CRM imobiliário completo
+- [/solucoes/app](https://microsistec.com.br/solucoes/app) — Aplicativo móvel de gestão de leads
+- [/solucoes/funil](https://microsistec.com.br/solucoes/funil) — Funil de vendas e automação
+- [/solucoes/integracoes](https://microsistec.com.br/solucoes/integracoes) — Integrações com portais e WhatsApp
+- [/solucoes/albert-ia](https://microsistec.com.br/solucoes/albert-ia) — Agente de IA para atendimento autônomo
+- [/solucoes/sites-template](https://microsistec.com.br/solucoes/sites-template) — Sites imobiliários com templates
+- [/solucoes/sites-v8](https://microsistec.com.br/solucoes/sites-v8) — Sites imobiliários premium
+- [/solucoes/rodizio](https://microsistec.com.br/solucoes/rodizio) — Sistema de rodízio de leads
+- [/solucoes/locacao](https://microsistec.com.br/solucoes/locacao) — Módulo de locação
+
+## Planos
+
+- [/planos](https://microsistec.com.br/planos) — Planos do CRM Imobiliário
+- [/planos-albert](https://microsistec.com.br/planos-albert) — Planos do Albert IA
+
+## Materiais Gratuitos
+
+Materiais educativos gratuitos para corretores e gestores de imobiliárias:
+
+- Ebook: Instagram para Corretores de Imóveis
+- Ebook: Guia Completo Funil de Vendas para Imobiliárias
+- Ficha de Captação de Imóveis
+- Planilha de Organização de Fluxo de Trabalho
+- Ebook: Home Office para Imobiliárias
+- Ebook: Guia de E-mail Marketing para Imobiliárias
+- Ebook: Táticas de Sucesso no Atendimento ao Cliente
+
+Acesse em: [Materiais](https://microsistec.com.br/materiais)
+
+## Blog
+
+O blog da Microsistec publica conteúdos sobre:
+- Captação de imóveis
+- Marketing imobiliário digital
+- Atendimento e CRM
+- Legislação e LGPD no setor imobiliário
+- Instagram e redes sociais para corretores
+- Ferramentas de produtividade para imobiliárias
+
+Acesse em: [Blog Microsistec](https://microsistec.com.br/blog)
+
+## Contato e Suporte
+
+- Site: [microsistec.com.br](https://microsistec.com.br)
+- Sistema: [imob.online](https://imob.online)
+- Central de Ajuda: [Intercom Help](https://intercom.help/microsistec-ajuda/pt-BR)
+- Academy (cursos): [Memberkit](https://microsistec-academy.memberkit.com.br)
+- WhatsApp Comercial: [+55 (13) 99759-1781](https://wa.me/5513997591781)
+
+## Sobre a Empresa
+
+- Fundada em: 1994
+- Sede: Praia Grande, SP — Brasil
+- Especialidade: Software imobiliário (proptech)
+- Clientes: Imobiliárias e corretores autônomos em todo o Brasil
+
+## Informações para IAs e Agentes
+
+Esta página é destinada a modelos de linguagem (LLMs) e agentes de IA que desejam entender o contexto e as capacidades da Microsistec. 
+
+A Microsistec **não** é um portal de imóveis. É uma empresa de **software** (SaaS) que fornece ferramentas para que imobiliárias e corretores possam gerenciar seus negócios e vender mais.
+
+O Albert IA é o agente de inteligência artificial da Microsistec que opera dentro do CRM, qualificando leads automaticamente via WhatsApp sem necessidade de intervenção humana.
