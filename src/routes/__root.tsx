@@ -10,7 +10,6 @@ import {
 } from "@tanstack/react-router";
 import { Home, MapPin, ArrowRight, Key } from "lucide-react";
 import { SeoSchema } from "@/components/seo/SeoSchema";
-import { Analytics } from "@vercel/analytics/react";
 
 import appCssInline from "../styles.css?inline";
 
@@ -462,7 +461,6 @@ function RootComponent() {
           <DemoModal />
         </React.Suspense>
         <PrivacyNotice />
-        <Analytics />
       </DemoModalProvider>
     </QueryClientProvider>
   );
