@@ -224,7 +224,7 @@ function IndiqueLandingPage() {
       <main className="flex-1">
         
         {/* HERO SECTION WITH FORM */}
-        <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-4 bg-[color:var(--brand-ink)] text-[color:var(--brand-sand)] relative overflow-hidden">
+        <section className="pt-24 pb-20 md:pt-28 md:pb-32 px-4 bg-[color:var(--brand-ink)] text-[color:var(--brand-sand)] relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-full bg-[color:var(--brand-clay)]/20 blur-[150px] rounded-full pointer-events-none" />
           
           <div className="container max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-center relative z-10">

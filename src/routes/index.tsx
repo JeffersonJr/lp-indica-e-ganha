@@ -24,9 +24,9 @@ function IndicaEGanhaPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
-    
+
     setIsSubmitting(true);
-    
+
     const formatForUrl = (text: string) => {
       return text
         .trim()
@@ -39,10 +39,10 @@ function IndicaEGanhaPage() {
 
     const cleanResponsavel = formatForUrl(formData.responsavel);
     const cleanImobiliaria = formatForUrl(formData.imobiliaria);
-    
+
     // Se por acaso os campos estiverem vazios, coloca um fallback
     const uniqueCode = `${cleanResponsavel || "user"}-${cleanImobiliaria || "imob"}`;
-    
+
     try {
       await sendIndicadorToClickUp({
         data: {
@@ -68,7 +68,7 @@ function IndicaEGanhaPage() {
     <div className="min-h-screen flex flex-col bg-background font-sans selection:bg-[color:var(--brand-teal)] selection:text-white">
       <Header />
       <main className="flex-1">
-        <section className="pt-32 pb-16 md:pt-40 md:pb-24 px-4 bg-[color:var(--brand-ink)] text-[color:var(--brand-sand)] relative overflow-hidden">
+        <section className="pt-24 pb-16 md:pt-28 md:pb-24 px-4 bg-[color:var(--brand-ink)] text-[color:var(--brand-sand)] relative overflow-hidden">
           {/* Subtle glow background */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full bg-[color:var(--brand-clay)]/20 blur-[120px] rounded-full pointer-events-none" />
 
@@ -84,7 +84,8 @@ function IndicaEGanhaPage() {
               </h1>
               <p className="text-lg md:text-xl text-[color:var(--brand-sand)]/80 mb-8 leading-relaxed">
                 Seu networking vale ouro. Indique imobiliárias para a Microsistec e ganhe <strong className="text-white">10% de desconto na sua mensalidade</strong> por indicação que virar cliente. <br className="hidden md:block" />
-                <span className="inline-block mt-2 text-base">
+                <span className="block mt-4 text-base">Os descontos são <strong className="text-white">cumulativos</strong>! Você pode chegar a <strong>100% OFF</strong> (com 10 indicações) e ainda presenteia seus indicados com vantagens exclusivas.</span>
+                <span className="block mt-4 text-base">
                   A cada indicação sua que virar cliente Microsistec você ganha <strong className="text-white">10% de desconto na sua mensalidade</strong>, podendo acumular até <strong>100% de desconto</strong>. Confira todas as regras da promoção abaixo.
                 </span>
               </p>
