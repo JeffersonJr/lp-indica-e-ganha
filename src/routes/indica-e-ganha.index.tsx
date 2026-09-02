@@ -4,6 +4,8 @@ import { ArrowRight, Gift, Loader2 } from "lucide-react";
 import { SimpleNav as Header, SimpleFooter as Footer } from "../components/microsistec/MicrosistecLanding";
 import { phoneMask } from "../lib/utils";
 
+import { sendIndicadorToClickUp } from "../lib/clickup";
+
 export const Route = createFileRoute("/indica-e-ganha/")({
   component: IndicaEGanhaPage,
 });
@@ -42,33 +44,15 @@ function IndicaEGanhaPage() {
     const uniqueCode = `${cleanResponsavel || "user"}-${cleanImobiliaria || "imob"}`;
     
     try {
-      const CLICKUP_LIST_ID = "901328205459";
-      const API_TOKEN = import.meta.env.VITE_CLICKUP_API_TOKEN;
-      
-      const taskName = `Indicador: ${formData.imobiliaria} (${formData.responsavel})`;
-      const taskDescription = `
-**Tipo:** Indicador
-**Campanha:** Indique e Ganha Setembro
-**Imobiliária:** ${formData.imobiliaria}
-**Responsável:** ${formData.responsavel}
-**Telefone:** ${formData.telefone}
-**Email:** ${formData.email}
-**Código de Indicação Gerado:** ${uniqueCode}
-      `;
-
-      await fetch(`https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`, {
-        method: "POST",
-        headers: { 
-          "Authorization": API_TOKEN,
-          "Content-Type": "application/json" 
-        },
-        body: JSON.stringify({
-          name: taskName,
-          description: taskDescription,
-          tags: ["indicador", "indique-e-ganha-setembro"]
-        })
+      await sendIndicadorToClickUp({
+        data: {
+          imobiliaria: formData.imobiliaria,
+          responsavel: formData.responsavel,
+          telefone: formData.telefone,
+          email: formData.email,
+          codigo: uniqueCode
+        }
       });
-      
     } catch (err) {
       console.error("Erro ao enviar para webhook", err);
     } finally {
